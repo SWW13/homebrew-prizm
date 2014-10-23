@@ -8,15 +8,7 @@ class Mkg3a < Formula
   depends_on 'cmake' => :build
 
   def install
-    #ENV['CC'] = '/usr/local/bin/gcc-4.9'
-    #ENV['CXX'] = '/usr/local/bin/g++-4.9'
-    #ENV['CPP'] = '/usr/local/bin/cpp-4.9'
-    #ENV['LD'] = '/usr/local/bin/gcc-4.9'
-
-    mkdir 'build' do
-      
-      FileUtils.cd('../src', :verbose => true)
-      
+    FileUtils.cd('src') do
       system 'cmake', '.', *std_cmake_args
       system 'make'
       system 'make', 'install'
